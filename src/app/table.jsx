@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch, NavLink, Link } from 'react-router-dom';
 import TableHeader from './tableheader';
-
+import TableBody from './tablebody';
 
 class Table extends Component {
 
@@ -11,6 +10,7 @@ class Table extends Component {
         return (
             <table className="table table-sm" >
                 <TableHeader headerColumn={headerColumn} />
+                <TableBody/>
             </table >
         )
     }

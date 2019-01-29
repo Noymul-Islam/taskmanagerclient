@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch, NavLink, Link } from 'react-router-dom';
 import CreateCustomerModal from './Modals/create-customer-modal';
 import Table from './table';
 import language from './assets/languageFile.json'
@@ -13,7 +12,7 @@ class Home extends Component {
 
     getHeaderColumn() {
         const headerColumn = [{ prop: 'sl', label: '#' },
-        { prop: 'Name', label: 'Name' },
+        { prop: 'TaskName', label: 'Name' },
         { prop: 'CreateDate', label: 'Create Date' },
         { prop: 'StartDate', label: 'Start Date' },
         { prop: 'EndDate', label: 'End Date' },
@@ -23,8 +22,10 @@ class Home extends Component {
 
 
     }
-    saveTask = (tableData,openCreateModal) => {
+    saveTask = (rowData,openCreateModal) => {
         console.log("Created new task");
+        const{tableData} = this.state;
+        tableData.push(rowData);
         this.setState({tableData,openCreateModal});
     }
     addNewTask = ()=> {
