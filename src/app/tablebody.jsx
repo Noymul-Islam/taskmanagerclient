@@ -8,9 +8,9 @@ class TableBody extends Component {
     render(){
 
         return (
-            <div>
-                
-            </div>
+          <tbody>
+              
+          </tbody>
         );
     }
 

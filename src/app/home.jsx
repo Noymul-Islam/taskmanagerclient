@@ -22,21 +22,43 @@ class Home extends Component {
 
 
     }
-    saveTask = (rowData,openCreateModal) => {
+    getTask = () => {
+        const tasks = localStorage.getItem("Tasks");
+        return tasks;
+    }
+
+    async componentDidMount() {
+        await this.getTask();
+    }
+    saveTask = (rowData, openCreateModal) => {
+        //  let task = [];
         console.log("Created new task");
-        const{tableData} = this.state;
+        const { tableData } = this.state;
         tableData.push(rowData);
-        this.setState({tableData,openCreateModal});
+        console.log(tableData);
+        let task = localStorage.getItem("Tasks");
+        if (!task) {
+            let array = [];
+            array.push(rowData);
+            localStorage.removeItem("Tasks");
+            localStorage.setItem({ "Tasks": array });
+        }
+        else {
+            localStorage.removeItem("Tasks");
+            task.push(rowData);
+            localStorage.setItem({ "Tasks": task });
+        }
+        this.setState({ tableData, openCreateModal });
     }
-    addNewTask = ()=> {
-        this.setState({"openCreateModal" : true});
+    addNewTask = () => {
+        this.setState({ "openCreateModal": true });
     }
-    closeModal= ()=>{
-        this.setState({"openCreateModal": false});
+    closeModal = () => {
+        this.setState({ "openCreateModal": false });
     }
 
     render() {
-        const { headerColumn, tableData,openCreateModal } = this.state;
+        const { headerColumn, tableData, openCreateModal } = this.state;
         return (
             <React.Fragment>
 
@@ -59,8 +81,8 @@ class Home extends Component {
                         }
                     </div>
                 </div>
-                <CreateCustomerModal  isVisible={openCreateModal} onSaveDataEvent={this.saveTask}
-                onCloseModalEvent = {this.closeModal}
+                <CreateCustomerModal isVisible={openCreateModal} onSaveDataEvent={this.saveTask}
+                    onCloseModalEvent={this.closeModal}
                 />
             </React.Fragment>
         );
