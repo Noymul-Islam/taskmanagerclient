@@ -10,7 +10,7 @@ class Table extends Component {
         return (
             <table className="table table-sm" >
                 <TableHeader headerColumn={headerColumn} />
-                <TableBody/>
+                <TableBody tableData ={tableData}/>
             </table >
         )
     }

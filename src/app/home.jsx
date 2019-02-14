@@ -23,7 +23,8 @@ class Home extends Component {
 
     }
     getTask = () => {
-        const tasks = localStorage.getItem("Tasks");
+        const tasks = JSON.parse( localStorage.getItem("Tasks"));
+        this.setState({tableData: tasks ? tasks : []});
         return tasks;
     }
 
@@ -31,22 +32,18 @@ class Home extends Component {
         await this.getTask();
     }
     saveTask = (rowData, openCreateModal) => {
-        //  let task = [];
-        console.log("Created new task");
         const { tableData } = this.state;
         tableData.push(rowData);
-        console.log(tableData);
-        let task = localStorage.getItem("Tasks");
+        let task = JSON.parse( localStorage.getItem("Tasks"));
         if (!task) {
             let array = [];
             array.push(rowData);
-            localStorage.removeItem("Tasks");
-            localStorage.setItem({ "Tasks": array });
+            localStorage.setItem("Tasks", JSON.stringify(array));
         }
         else {
             localStorage.removeItem("Tasks");
             task.push(rowData);
-            localStorage.setItem({ "Tasks": task });
+            localStorage.setItem("Tasks", JSON.stringify(task));
         }
         this.setState({ tableData, openCreateModal });
     }

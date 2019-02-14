@@ -5,12 +5,30 @@ class TableBody extends Component {
         data: []
     }
 
-    render(){
-
+    render() {
+        const { tableData } = this.props;
+        debugger;
         return (
-          <tbody>
-              
-          </tbody>
+            <tbody>
+                {  tableData &&
+                    tableData.map(rowData => <tr>
+                         {
+                             rowData.map(columnData => <td>
+                                   test
+                             </td>)
+                         }
+                    </tr>)
+
+                }
+                {/* <tr key={1}>
+                    {
+                        headerColumn.map(column => <th key={column.prop}>
+                            {column.label}
+                        </th>)
+                    }
+                </tr> */}
+
+            </tbody>
         );
     }
 
