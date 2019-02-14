@@ -39,7 +39,7 @@ class App extends Component {
         return (
             <div className="App">
                 <NavBar navigations={this.state.navigations} />
-                <main className="container">
+                <div className="container padding-v-32">
                     <Switch>
                         <Route path="/home" component = {Home} />
                         <Route path="/account-info" component = {AccountInfo}/>
@@ -48,7 +48,7 @@ class App extends Component {
                         <Redirect to="/not-found"/>
                     </Switch>
 
-                </main>
+                </div>
 
 
             </div>
