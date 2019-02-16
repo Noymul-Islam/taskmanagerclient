@@ -4,17 +4,16 @@ class TableBody extends Component {
     state = {
         data: []
     }
-
+   dataProps = ["sl","TaskName","CreateDate","StartDate","EndDate","Status"] 
     render() {
         const { tableData } = this.props;
-        debugger;
         return (
             <tbody>
                 {  tableData &&
-                    tableData.map(rowData => <tr>
+                    tableData.map(rowData => <tr key = {rowData["sl"]}>
                          {
-                             rowData.map(columnData => <td>
-                                   test
+                             this.dataProps.map(propName => <td key = {propName}>
+                                   {rowData[propName]}
                              </td>)
                          }
                     </tr>)

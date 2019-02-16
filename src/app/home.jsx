@@ -67,7 +67,7 @@ class Home extends Component {
                     <div className="card-body">
                         {
                             tableData && tableData.length > 0 &&
-                            <Table headerColumn={headerColumn} data={tableData} />
+                            <Table headerColumn={headerColumn} tableData={tableData} />
 
                         }
                         {

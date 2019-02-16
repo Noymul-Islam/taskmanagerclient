@@ -6,6 +6,7 @@ import NavBar from './app/navbar';
 import Home from './app/home';
 import Statistics from './app/statistics';
 import AccountInfo from './app/account-info';
+import Login from './app/login';
 class App extends Component {
     state = {};
     navigations = [
@@ -41,11 +42,12 @@ class App extends Component {
                 <NavBar navigations={this.state.navigations} />
                 <div className="container padding-v-32">
                     <Switch>
-                        <Route path="/home" component = {Home} />
-                        <Route path="/account-info" component = {AccountInfo}/>
-                        <Route  path="/statistics" component = {Statistics}/>
-                        <Redirect from="/" to="/home"></Redirect>
-                        <Redirect to="/not-found"/>
+                        <Route path="/login" component={Login} />
+                        <Route path="/home" component={Home} />
+                        <Route path="/account-info" component={AccountInfo} />
+                        <Route path="/statistics" component={Statistics} />
+                        <Redirect from="/" to="/login"></Redirect>
+                        <Redirect to="/not-found" />
                     </Switch>
 
                 </div>

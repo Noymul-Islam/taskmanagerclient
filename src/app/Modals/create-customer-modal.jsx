@@ -6,6 +6,7 @@ import Input from '../Common/Input';
 class CreateCustomerModal extends Component {
     state = {
         data: {
+            'sl' : 1,
             "TaskName": "",
             "CreateDate": "",
             "StartDate": "",
@@ -37,11 +38,27 @@ class CreateCustomerModal extends Component {
         data['CreateDate'] = CreateDate;
         this.setState({data});
     }
+    setSerialNumber = ()=>{
+        let {data} = this.state; 
+        let latest = JSON.parse(localStorage.getItem("latestSerial"));
+        if(!latest){
+           localStorage.setItem("latestSerial",JSON.stringify(data['sl']))
+        }
+        else {
+            latest = latest+1;
+            localStorage.setItem("latestSerial",JSON.stringify(latest));
+            data['sl'] = latest;
+            this.setState({data});
+
+        }
+    }
     createTask = () => {
         const { onSaveDataEvent } = this.props;
         this.setStatusAndCreateDate();
+        this.setSerialNumber();
         const dummyData = this.state.data;
         console.log(dummyData);
+        this.setState({data:[]})
         onSaveDataEvent(dummyData, false);
 
     }

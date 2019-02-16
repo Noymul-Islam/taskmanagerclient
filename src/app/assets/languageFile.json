@@ -3,6 +3,8 @@
     "ADD_NEW_TASK" : "Add new task",
     "CREATE_NEW_CUSTOMER": "Create new task",
     "CREATE" : "Create",
-    "CANCEL" : "Cancel"
+    "CANCEL" : "Cancel",
+    "PUT_CREDENTIALS" : "Login with your credentials to get access",
+    "SUBMIT" : "Submit"
 
 }
