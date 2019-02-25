@@ -5,16 +5,13 @@ class TableBody extends Component {
         data: []
     }
     dataProps = ["sl", "TaskName", "CreateDate", "StartDate", "EndDate", "Status"]
-    editRowData = (rowData) => {
-
-    }
     render() {
-        const { tableData,isRowclickable, } = this.props;
+        const { tableData,isRowclickable,setRowDataToUpdate} = this.props;
         let classes = isRowclickable ? "cursor-hand" : "";
         return (
             <tbody>
                 {tableData &&
-                    tableData.map(rowData => <tr className={classes} key={rowData["sl"]} onClick={() => { this.editRowData(rowData)}}>
+                    tableData.map(rowData => <tr className={classes} key={rowData["sl"]} onClick={() => {setRowDataToUpdate(rowData)}}>
                         {
                             this.dataProps.map(propName => <td key={propName}>
                                 { rowData[propName]}

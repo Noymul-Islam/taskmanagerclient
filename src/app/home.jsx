@@ -3,6 +3,14 @@ import CreateCustomerModal from './Modals/create-customer-modal';
 import Table from './table';
 import language from './assets/languageFile.json'
 class Home extends Component {
+    data = {
+        "sl" : "",
+        "TaskName": "",
+        "CreateDate" : "",
+        "StartDate" : "",
+        "EndDate" : "",
+        "Status" : ""
+    }
     state = {
         "headerColumn": this.getHeaderColumn(),
         "tableData": [],
@@ -54,8 +62,13 @@ class Home extends Component {
     closeModal = () => {
         this.setState({ "openCreateModal": false });
     }
-    setRowDataToUpdate =(rowData)=>{
-
+    onEditModalClose = ()=>{
+        const editRow = {};
+        this.setState({editRow})
+    }
+    setRowDataToUpdate =(editRow)=>{
+       const openCreateModal = true;
+       this.setState({editRow,openCreateModal});
     }
     
 
@@ -84,7 +97,7 @@ class Home extends Component {
                     </div>
                 </div>
                 <CreateCustomerModal isVisible={openCreateModal} onSaveDataEvent={this.saveTask} editRow = {editRow? editRow : null}
-                    onCloseModalEvent={this.closeModal}
+                  onEditModalClose={this.onEditModalClose}  onCloseModalEvent={this.closeModal} data = {this.data}
                 />
             </React.Fragment>
         );
