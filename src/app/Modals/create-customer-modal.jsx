@@ -85,9 +85,9 @@ class CreateCustomerModal extends Component {
                     <div className="modal-body">
                         <div>
                             <form>
-                                <Input name="TaskName" label="Add task name" type="text" value={data['TaskName']} onChange={this.onChange} />
-                                <Input name="StartDate" label="Start date" type="date" value={data['StartDate']}  onChange={this.onChange} />
-                                <Input name="EndDate" label="End date" type="date" value={data['EndDate']}  onChange={this.onChange} />
+                                <Input name="TaskName" label="Add task name" type="text" value={data['TaskName'] || ''} onChange={this.onChange} />
+                                <Input name="StartDate" label="Start date" type="date" value={data['StartDate'] || ''}  onChange={this.onChange} />
+                                <Input name="EndDate" label="End date" type="date" value={data['EndDate'] || ''}  onChange={this.onChange} />
                             </form>
                         </div>
                     </div>

@@ -6,11 +6,11 @@ class Table extends Component {
 
     render() {
 
-        const { headerColumn, tableData } = this.props;
+        const { headerColumn, tableData,isRowclickable,setRowDataToUpdate } = this.props;
         return (
             <table className="table table-sm" >
                 <TableHeader headerColumn={headerColumn} />
-                <TableBody tableData ={tableData}/>
+                <TableBody tableData ={tableData} isRowclickable = {isRowclickable} setRowDataToUpdate={setRowDataToUpdate}/>
             </table >
         )
     }

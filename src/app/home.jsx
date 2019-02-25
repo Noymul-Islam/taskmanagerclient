@@ -6,7 +6,8 @@ class Home extends Component {
     state = {
         "headerColumn": this.getHeaderColumn(),
         "tableData": [],
-        "openCreateModal": false
+        "openCreateModal": false,
+        "editRow" : {}
     };
 
 
@@ -53,9 +54,13 @@ class Home extends Component {
     closeModal = () => {
         this.setState({ "openCreateModal": false });
     }
+    setRowDataToUpdate =(rowData)=>{
+
+    }
+    
 
     render() {
-        const { headerColumn, tableData, openCreateModal } = this.state;
+        const { headerColumn, tableData, openCreateModal,editRow } = this.state;
         return (
             <React.Fragment>
 
@@ -67,7 +72,7 @@ class Home extends Component {
                     <div className="card-body">
                         {
                             tableData && tableData.length > 0 &&
-                            <Table headerColumn={headerColumn} tableData={tableData} />
+                            <Table headerColumn={headerColumn} tableData={tableData} isRowclickable ={true} setRowDataToUpdate = {this.setRowDataToUpdate}/>
 
                         }
                         {
@@ -78,7 +83,7 @@ class Home extends Component {
                         }
                     </div>
                 </div>
-                <CreateCustomerModal isVisible={openCreateModal} onSaveDataEvent={this.saveTask}
+                <CreateCustomerModal isVisible={openCreateModal} onSaveDataEvent={this.saveTask} editRow = {editRow? editRow : null}
                     onCloseModalEvent={this.closeModal}
                 />
             </React.Fragment>
